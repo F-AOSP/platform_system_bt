@@ -4,6 +4,10 @@ LOCAL_PATH:= $(call my-dir)
 # ========================================================
 include $(CLEAR_VARS)
 
+ifeq ($(BOARD_USES_LEGACY_ALSA_AUDIO),true)
+	LOCAL_CFLAGS += -DSAMPLE_RATE_48K
+endif
+
 # platform specific
 LOCAL_SRC_FILES+= \
 	bte_main.c \
