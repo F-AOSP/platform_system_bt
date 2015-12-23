@@ -169,7 +169,7 @@ static void reassemble_and_dispatch(UNUSED_ATTR BT_HDR *packet) {
 
       if (full_length <= packet->len) {
         if (full_length < packet->len)
-          LOG_WARN(LOG_TAG, "%s found l2cap full length %d less than the hci length %d.", __func__, l2cap_length, packet->len);
+          LOG_VERBOSE(LOG_TAG, "%s found l2cap full length %d less than the hci length %d.", __func__, l2cap_length, packet->len);
 
         callbacks->reassembled(packet);
         return;
