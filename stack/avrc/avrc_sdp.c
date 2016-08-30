@@ -241,7 +241,7 @@ UINT16 AVRC_AddRecord(UINT16 service_uuid, char *p_service_name,
     }
     result &= SDP_AddProtocolList(sdp_handle, AVRC_NUM_PROTO_ELEMS,
                                                   (tSDP_PROTOCOL_ELEM *)avrc_proto_desc_list);
-
+#if (defined(AVCT_COVER_ART_INCLUDED) && (AVCT_COVER_ART_INCLUDED == TRUE))
     /* additional protocal descriptor, required only for version > 1.3    */
     if ((profile_version > AVRC_REV_1_3 ) && (browse_supported))
     {
@@ -270,6 +270,7 @@ UINT16 AVRC_AddRecord(UINT16 service_uuid, char *p_service_name,
         }
         result &= SDP_AddAdditionProtoLists( sdp_handle, AVRC_NUM_ADDL_PROTO_ELEMS, (tSDP_PROTO_LIST_ELEM *)avrc_add_proto_desc_list);
     }
+#endif
     /* add profile descriptor list   */
     result &= SDP_AddProfileDescriptorList(sdp_handle, UUID_SERVCLASS_AV_REMOTE_CONTROL, profile_version);
 
